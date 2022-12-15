@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	long long int n;
+	cin>>n;
+	long long int count1=0,count2=0,count3=0;
+	long long int min2,min3;
+	long long int arr[n];
+	long long int temp=*max_element(arr,arr+n),temp2=*max_element(arr,arr+n);
+	
+	for(long long int i=0;i<n;i++)
+	{
+		cin>>arr[i];
+	}
+	long long int min1=*min_element(arr,arr+n);
+	for(long long int i=0;i<n;i++)
+	{
+	if(arr[i]<temp && arr[i]!=min1){
+		temp=arr[i];
+	}
+	}
+	min2=temp;
+	
+	for(long long int i=0;i<n;i++)
+	{
+	if(arr[i]<temp2 && arr[i]!=min1 &&arr[i]!=min2){
+		temp2=arr[i];
+	}
+	}
+	min3=temp2;
+	
+	for(long long int i=0;i<n;i++)
+	{	
+	if(arr[i]==min1)
+	{
+	count1++;	
+	}
+	else if(arr[i]==min2)
+	{
+	count2++;	
+	}
+	else if(arr[i]==min3)
+	{
+	count3++;
+	}
+	}	
+	if(count1>=3){
+		cout<<((count1)*(count1-1)*(count1-2)/6);
+	}
+	else if(count1==2){
+		cout<<(count2);
+	}
+else if(count1==1 && count2>=2){
+	cout<<((count2)*(count2-1)/2);
+}
+else if(count1==1 && count2==1){
+	cout<<(count3);
+}
+return 0;
+}
